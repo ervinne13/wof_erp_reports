@@ -1,0 +1,41 @@
+fieldset{
+	margin-bottom: 20px;
+}
+
+select.form-control{
+	height: 25px;
+}
+
+.form-pane .title{
+	margin: 0 0 20px 0;
+}
+
+.form-control{
+	display: inline-block;
+}
+
+.no-pad-left{
+	padding-left: 0;
+}
+
+.no-pad-right{
+	padding-right: 0;
+}
+
+.no-pad-left button{
+	margin-top: -1px;
+}
+
+.type-fields{
+	display: none;
+}
+
+.right-pane h3{
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.vip-check{
+	margin-top: -4px;
+}

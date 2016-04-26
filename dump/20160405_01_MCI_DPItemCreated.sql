@@ -1,0 +1,1 @@
+﻿ALTER TABLE "tblINV_MachineItems" ADD COLUMN "MCI_DPItemCreated" bit(1) DEFAULT 0::bit NOT NULL;

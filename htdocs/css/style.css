@@ -1,0 +1,39 @@
+.content{
+	margin-top: 50px;
+}
+
+.side-coupon-tab{
+	margin-bottom: 20px;
+}
+
+.form-pane{
+	margin-bottom: 20px;
+}
+
+.form-pane input{
+	text-align: center;
+	font-weight: normal;
+	
+}
+
+.form-pane .title{
+	background: #F78B3E;
+	color: #fff;
+	padding: 5px;
+	margin-right: -30px;
+	margin: 0 -30px 20px 0;
+	font-weight: bold;
+}
+
+.ticket-points{
+	margin-bottom: 20px;
+}
+
+.text-center th{
+	text-align: center;
+}
+
+
+select.form-control{
+	height: 30px;
+}

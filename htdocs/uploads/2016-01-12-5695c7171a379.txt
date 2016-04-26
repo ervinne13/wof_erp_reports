@@ -1,0 +1,203 @@
+/*
+Created: 9/25/2015
+Modified: 9/28/2015
+Model: GJ
+Database: PostgreSQL 9.2
+*/
+
+
+-- Create tables section -------------------------------------------------
+
+-- Table tblACC_GJDetail
+
+CREATE TABLE "tblACC_GJDetail"(
+ "GJD_PFK_DocNo" Character varying(30) NOT NULL,
+ "GJD_LineNo" Bigint NOT NULL,
+ "GJD_PostingDate" Timestamp,
+ "GJD_AccountType" Character varying(30),
+ "GJD_AccountNo" Character varying(30),
+ "GJD_AccountName" Character varying(100),
+ "GJD_Debit" Numeric(12,4),
+ "GJD_Credit" Numeric(12,4),
+ "GJD_Amount" Numeric(12,4),
+ "GJD_AmountLCY" Numeric(12,4),
+ "GJD_CY" Character varying(30),
+ "GJD_BalAccountType" Character varying(30),
+ "GJD_BalAccountNo" Character varying(30),
+ "GJD_BalAccountName" Character varying(100),
+ "GJD_CPC" Character varying(30),
+ "GJD_Comment" Character varying(250),
+ "CreatedBy" Character varying(20),
+ "DateCreated" Timestamp,
+ "ModifiedBy" Character varying(20),
+ "DateModified" Timestamp
+)
+WITH (OIDS=FALSE)
+;
+
+-- Add keys for table tblACC_GJDetail
+
+ALTER TABLE "tblACC_GJDetail" ADD CONSTRAINT "Key8" PRIMARY KEY ("GJD_PFK_DocNo","GJD_LineNo")
+;
+
+-- Table tblACC_GJHeader
+
+CREATE TABLE "tblACC_GJHeader"(
+ "GJ_DocNo" Character varying(30) NOT NULL,
+ "GJ_DocDate" Timestamp,
+ "GJ_RefNo" Character varying(30),
+ "GJ_Remarks" Character varying(250),
+ "GJ_Status" Character varying(20),
+ "GJ_Amount" Numeric(12,4),
+ "GJ_AmountLCy" Numeric(12,4),
+ "CreatedBy" Character varying(20),
+ "DateCreated" Timestamp,
+ "ModifiedBy" Character varying(20),
+ "DateModified" Timestamp
+)
+WITH (OIDS=FALSE)
+;
+
+-- Add keys for table tblACC_GJHeader
+
+ALTER TABLE "tblACC_GJHeader" ADD CONSTRAINT "Key7" PRIMARY KEY ("GJ_DocNo")
+;
+
+-- Table tblACC_GLEntry
+
+CREATE TABLE "tblACC_GLEntry"(
+ "GL_EntryNo" Bigint NOT NULL,
+ "GL_DocType" Character varying(30),
+ "GL_DocNo" Character varying(30),
+ "GL_DocDate" Timestamp,
+ "GL_AccountType" Character varying(30),
+ "GL_AccountID" Character varying(30),
+ "GL_AccountName" Character varying(100),
+ "GL_Debit" Numeric(12,4),
+ "GL_Credit" Numeric(12,4),
+ "GL_Amount" Numeric(12,4),
+ "GL_CPC" Character varying(30),
+ "GL_FK_BT_BookID" Character varying(20),
+ "GL_BalAccountType" Character varying(30),
+ "GL_BalAccountNo" Character varying(30),
+ "GL_BalAccountName" Character varying(100),
+ "GL_Status" Character varying(20),
+ "GL_PostedBy" Character varying(20),
+ "GL_DatePosted" Timestamp,
+ "GL_DateCreated" Timestamp
+)
+WITH (OIDS=FALSE)
+;
+
+-- Add keys for table tblACC_GLEntry
+
+ALTER TABLE "tblACC_GLEntry" ADD CONSTRAINT "GL_EntryNo" PRIMARY KEY ("GL_EntryNo")
+;
+
+-- Table tblACC_BankAccountLedger
+
+CREATE TABLE "tblACC_BankAccountLedger"(
+ "BAL_EntryNo" Bigint NOT NULL,
+ "BAL_DocType" Character varying(30),
+ "BAL_DocNo" Character varying(30),
+ "BAL_DocDate" Timestamp,
+ "BAL_DatePosted" Timestamp,
+ "BAL_BankAccountNo" Character varying(30),
+ "BAL_BankAccountName" Character varying(250),
+ "BAL_Debit" Numeric(12,4),
+ "BAL_Credit" Numeric(12,4),
+ "BAL_Amount" Numeric(12,4),
+ "BAL_Currency" Character varying(30),
+ "BAL_AmountLCY" Numeric(12,4),
+ "BAL_BalAccountType" Character varying(30),
+ "BAL_BalAccountNo" Character varying(30),
+ "BAL_BalAccountName" Bigint,
+ "BAL_CPC" Character varying(30),
+ "BAL_Status" Character varying(20),
+ "BAL_PostedBy" Character varying(20),
+ "BAL_DateCreated" Timestamp
+)
+WITH (OIDS=FALSE)
+;
+
+-- Add keys for table tblACC_BankAccountLedger
+
+ALTER TABLE "tblACC_BankAccountLedger" ADD CONSTRAINT "GL_EntryNo" PRIMARY KEY ("BAL_EntryNo")
+;
+
+-- Table tblCOM_CustomerLedger
+
+CREATE TABLE "tblCOM_CustomerLedger"(
+ "CL_EntryNo" Bigint NOT NULL,
+ "CL_DocType" Character varying(30),
+ "CL_DocDate" Timestamp,
+ "CL_DocNo" Character varying(30),
+ "CL_DocAmount" Numeric(12,4),
+ "CL_CustomerID" Character varying(30),
+ "CL_CustomerName" Character varying(250),
+ "CL_ExtDocNo" Character varying(30),
+ "CL_CustomerPostingGroup" Character varying(30),
+ "CL_PaymentTerms" Character varying(30),
+ "CL_DueDate" Timestamp,
+ "CL_Company" Character varying(30),
+ "CL_CPC" Character varying(30),
+ "CL_BalAccountType" Character varying(30),
+ "CL_BalAccountNo" Character varying(30),
+ "CL_BalAccountName" Character varying(250),
+ "CL_AppliesToDocType" Character varying(30),
+ "CL_AppliesToDocNo" Character varying(30),
+ "CL_AppliesToID" Character varying(30),
+ "CL_PostedBy" Character varying(20),
+ "CL_DatePosted" Timestamp
+)
+WITH (OIDS=FALSE)
+;
+
+-- Add keys for table tblCOM_CustomerLedger
+
+ALTER TABLE "tblCOM_CustomerLedger" ADD CONSTRAINT "SL_EntryNo" PRIMARY KEY ("CL_EntryNo")
+;
+
+-- Table tblCOM_SupplierLedger
+
+CREATE TABLE "tblCOM_SupplierLedger"(
+ "SL_EntryNo" Bigint NOT NULL,
+ "SL_DocType" Character varying(30),
+ "SL_DocDate" Timestamp,
+ "SL_DocNo" Character varying(30),
+ "SL_DocAmount" Numeric(12,4),
+ "SL_DocAmountLCY" Numeric(12,4),
+ "SL_SupplierID" Character varying(30),
+ "SL_SupplierName" Character varying(250),
+ "SL_ExtDocNo" Character varying(30),
+ "SL_Currency" Character varying(30),
+ "SL_SupplierPostingGroup" Character varying(30),
+ "SL_PaymentTerms" Character varying(30),
+ "SL_DueDate" Timestamp,
+ "SL_Buyer" Character varying(30),
+ "SL_RequestedBy" Character varying(30),
+ "SL_Company" Character varying(30),
+ "SL_Location" Character varying(30),
+ "SL_JORefNo" Character varying(30),
+ "SL_JOAmount" Numeric(12,4),
+ "SL_AppliesToDocType" Character varying(30),
+ "SL_AppliesToDocNo" Character varying(30),
+ "SL_AppliesToID" Character varying(30),
+ "SL_PostedBy" Character varying(20),
+ "SL_DatePosted" Timestamp
+)
+WITH (OIDS=FALSE)
+;
+
+-- Add keys for table tblCOM_SupplierLedger
+
+ALTER TABLE "tblCOM_SupplierLedger" ADD CONSTRAINT "SL_EntryNo" PRIMARY KEY ("SL_EntryNo")
+;
+
+-- Create relationships section ------------------------------------------------- 
+
+ALTER TABLE "tblACC_GJDetail" ADD CONSTRAINT "PFK_GJHeader_Detail" FOREIGN KEY ("GJD_PFK_DocNo") REFERENCES "tblACC_GJHeader" ("GJ_DocNo") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+
+

@@ -1,0 +1,23 @@
+.table-item .icon-act{
+	display: inline-block;
+	margin: 0;
+}
+
+.btn-act{
+	margin-top: 10px;
+}
+
+.modal-body .table-wrap{
+	height: 400px;
+	overflow: auto;
+}
+
+.coupon-popup table tbody tr{
+	cursor: pointer;
+}
+
+@media (max-width:767px){
+	.alert-popup input{
+		margin-bottom: 10px;
+	}
+}
